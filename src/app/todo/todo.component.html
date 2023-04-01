@@ -1,0 +1,18 @@
+<div class="todo-container">
+    <h1>Todo List</h1>
+    <form (submit)="addTodo()">
+      <input [(ngModel)]="newTodoTitle" name="newTodoTitle" placeholder="What needs to be done?" />
+      <button type="submit">Add</button>
+    </form>
+    <ul>
+      <li *ngFor="let todo of todos">
+        <app-todo-item
+          [todo]="todo"
+          (delete)="deleteTodo($event)"
+          (update)="updateTodo($event.id, $event.updatedTitle)"
+          (toggleCompleted)="toggleCompleted($event)"
+        ></app-todo-item>
+      </li>
+    </ul>
+  </div>
+  

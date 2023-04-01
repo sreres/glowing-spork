@@ -1,0 +1,13 @@
+<div class="todo-item" [ngClass]="{ completed: todo.completed }">
+    <input type="checkbox" [checked]="todo.completed" (change)="toggleTodoCompleted()" />
+    <span *ngIf="!editing" (dblclick)="startEditing()">{{ todo.title }}</span>
+    <input
+      *ngIf="editing"
+      [(ngModel)]="updatedTitle"
+      (blur)="finishEditing()"
+      (keyup.enter)="finishEditing()"
+      (keyup.escape)="cancelEditing()"
+    />
+    <button (click)="deleteTodo()">Delete</button>
+  </div>
+  
